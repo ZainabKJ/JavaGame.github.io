@@ -1,1 +1,1 @@
-# JavaGame.github.io
+# JavaGame
