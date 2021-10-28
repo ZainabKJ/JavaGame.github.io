@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="game.js"></script>
+    <script type="text/javascript" src="game.js"></script>
     <script>
       var bear;
       var bees;
-      var laststringtime;
+      var laststingtime;
+      var gamestart = false;
       var updateTimer;
+      var numbees;
+      var i = 1;
+      // var time;
     </script>
 
     <noscript>
@@ -23,8 +27,9 @@
       <h1>Help the bear escape the bees !</h1>
       <p>
         Bear tries to avoid being stung by
-        <input type="text" id="nbBees" value="1" size="3" /> bees by running and
-        jumping. The objective is to have as less stings as possible!
+        <input type="text" id="nbBees" value="1" size="3" />
+        bees by running and jumping. The objective is to have as less stings as
+        possible!
       </p>
       <p>
         Enter the speed for bear:
@@ -37,6 +42,10 @@
         <input type="text" id="periodTimer" value="10" size="3" /> ms
       </p>
       <h2>Press left, right, up, down keys to move the bear</h2>
+
+      <button type="button" id="addbeebtn" class="button" onclick="addbees()">
+        Add bees
+      </button>
     </div>
     <div id="scores">
       <table>
