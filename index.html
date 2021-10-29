@@ -5,9 +5,11 @@
     <script>
       var bear;
       var bees;
+      var gameover;
       var laststingtime;
       var gamestart = false;
       var updateTimer;
+      var updateVal;
       var numbees;
       var i = 1;
       // var time;
@@ -33,7 +35,14 @@
       </p>
       <p>
         Enter the speed for bear:
-        <input type="text" id="dBear" value="50" size="3" /> px/ms <br />
+        <input
+          type="text"
+          id="spBear"
+          value="50"
+          size="3"
+          onchange="setSpeed();"
+        />
+        px/ms <br />
       </p>
       <p>
         You can ajust bees' speed

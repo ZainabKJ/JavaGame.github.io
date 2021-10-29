@@ -10,9 +10,6 @@ function Bear() {
     this.y += this.dBear * yDir;
     this.display();
   };
-  // setSpeed(){
-
-  // }
   this.display = function () {
     this.htmlElement.style.left = this.x + "px";
     this.htmlElement.style.top = this.y + "px";
@@ -39,20 +36,34 @@ function start() {
   document.addEventListener("keydown", moveBear, false);
   //create new array for bees
   bees = new Array();
-  //document.getElementById("dBear").addEventListener("change", setSpeed());
-  //create bees
+  gameover = false;
   makeBees();
   updateBees();
-  lastStingTime = new Date();
+  document.addEventListener(
+    "keydown",
+    function () {
+      lastStingTime = new Date();
+    },
+    false
+  );
   //gamestart = new Date();
 }
-function Date() {
-  gamestart;
+// function Date() {
+//   gamestart;
+// }
+
+function setSpeed() {
+  bear.dBear = document.getElementById("speedBear").value;
+  console.log("Bear speed is: " + this.dBear);
 }
+
 function moveBear(e) {
-  if (gamestart == false) {
-    gamestart == true;
+  if (!gamestart) {
+    gamestart = true;
   }
+  this.setSpeed = function () {
+    this.dBear = document.getElementById("spBear").value;
+  };
   //codes of the four keys
   const KEYUP = 38;
   const KEYDOWN = 40;
@@ -193,27 +204,16 @@ function addbees() {
   document.getElementById("nbBees").value = i;
 }
 
-// function endAndStartTimer() {
-//   window.clearTimeout(score);
-//   //var millisecBeforeRedirect = 10000;
-//   score = window.setTimeout(updateBees() {
-//     alert("Game Over");
-//   }, score);
-// }
-// Create an “add bee” button that increases the number of bees by one.
-// Hint: write addBee() function that adds one to the number of bees, create a new bee,
-// display it and add it to the array of bees.
-
 function isHit(defender, offender) {
   if (overlap(defender, offender)) {
     //check if the two image overlap
     let score = hits.innerHTML;
     score = Number(score) + 1; //increment the score
     hits.innerHTML = score; //display the new score
-    if (score == 1001) {
-      alert("Game Over");
-      document.location.reload();
-      clearTimeout(periodTimer);
+
+    if (score === 1000) {
+      clearTimeout(updateTimer);
+      window.log(alert("GameOver"));
     }
     //calculate longest duration
     let newStingTime = new Date();
