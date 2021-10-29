@@ -5,12 +5,12 @@ function Bear() {
   this.x = this.htmlElement.offsetLeft;
   this.y = this.htmlElement.offsetTop;
   this.move = function (xDir, yDir) {
-    this.fitBounds();
     this.x += this.dBear * xDir;
     this.y += this.dBear * yDir;
     this.display();
   };
   this.display = function () {
+    this.fitBounds();
     this.htmlElement.style.left = this.x + "px";
     this.htmlElement.style.top = this.y + "px";
     this.htmlElement.style.display = "block";
@@ -39,24 +39,12 @@ function start() {
   bees = new Array();
   makeBees();
   updateBees();
-
-  //lastStingTime = new Date();
-
-  //gamestart = new Date();
 }
-// function Date() {
-//   gamestart;
-// }
-
-// function setSpeed() {
-//   bear.dBear = document.getElementById("speedBear").value;
-//   console.log("Bear speed is: " + this.dBear);
-// }
 
 function moveBear(e) {
-  if (gamestart != true) {
-    gamestart = true;
-    lastStingTime = new Date(); //take start time
+  if (start != true) {
+    start = true;
+    lastStingTime = new Date();
   }
 
   //codes of the four keys
@@ -186,7 +174,7 @@ function updateBees() {
   moveBees();
   //use a fixed update period
   //document.getElementById("periodTimer").value;
-  let period = periodTimer; //modify this to control refresh period
+  let period = document.getElementById("periodTimer").value; //modify this to control refresh period
   //update the timer for the next move
   updateTimer = setTimeout("updateBees()", period);
 }
@@ -217,7 +205,7 @@ function isHit(defender, offender) {
     let thisDuration = newStingTime - lastStingTime;
     lastStingTime = newStingTime;
     let longestDuration = Number(duration.innerHTML);
-    if (longestDuration === 0) {
+    if (longestDuration === 0 || isNaN(longestDuration)) {
       longestDuration = thisDuration;
     } else {
       if (longestDuration < thisDuration) longestDuration = thisDuration;
