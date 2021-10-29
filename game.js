@@ -34,36 +34,31 @@ function start() {
   //create bear
   bear = new Bear();
   document.addEventListener("keydown", moveBear, false);
+  document.getElementById("spBear").addEventListener("change", setSpeed);
   //create new array for bees
   bees = new Array();
-  gameover = false;
   makeBees();
   updateBees();
-  document.addEventListener(
-    "keydown",
-    function () {
-      lastStingTime = new Date();
-    },
-    false
-  );
+
+  //lastStingTime = new Date();
+
   //gamestart = new Date();
 }
 // function Date() {
 //   gamestart;
 // }
 
-function setSpeed() {
-  bear.dBear = document.getElementById("speedBear").value;
-  console.log("Bear speed is: " + this.dBear);
-}
+// function setSpeed() {
+//   bear.dBear = document.getElementById("speedBear").value;
+//   console.log("Bear speed is: " + this.dBear);
+// }
 
 function moveBear(e) {
-  if (!gamestart) {
+  if (gamestart != true) {
     gamestart = true;
+    lastStingTime = new Date(); //take start time
   }
-  this.setSpeed = function () {
-    this.dBear = document.getElementById("spBear").value;
-  };
+
   //codes of the four keys
   const KEYUP = 38;
   const KEYDOWN = 40;
@@ -82,7 +77,9 @@ function moveBear(e) {
     bear.move(0, 1);
   } // down key
 }
-
+function setSpeed() {
+  bear.dBear = parseInt(document.getElementById("spBear").value); //Update the speed to the value we get from the input field
+}
 class Bee {
   constructor(beeNumber) {
     //the HTML element corresponding to the IMG of the bee
