@@ -169,21 +169,18 @@ function moveBees() {
   }
 }
 function updateBees() {
-  // update loop for game
   //move the bees randomly
   moveBees();
   //use a fixed update period
-  //document.getElementById("periodTimer").value;
-  let period = document.getElementById("periodTimer").value; //modify this to control refresh period
-  //update the timer for the next move
+  let period = document.getElementById("periodTimer").value;
   updateTimer = setTimeout("updateBees()", period);
 }
 
 function addbees() {
-  num = 1 + nbBees;
-  var bee = new Bee(num); //create object and its IMG element
-  bee.display(); //display the bee
-  bees.push(bee); //add the bee object to the bees array
+  let num = 1 + nbBees;
+  var bee = new Bee(num);
+  bee.display();
+  bees.push(bee);
 
   i++;
   document.getElementById("nbBees").value = i;
@@ -234,6 +231,5 @@ function overlap(element1, element2) {
   if (intersectArea == 0 || isNaN(intersectArea)) {
     return false;
   }
-
   return true;
 }
