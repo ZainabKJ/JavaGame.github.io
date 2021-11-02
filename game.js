@@ -37,6 +37,7 @@ function start() {
   document.getElementById("spBear").addEventListener("change", setSpeed);
   //create new array for bees
   bees = new Array();
+  lastStingTime = new Date();
   makeBees();
   updateBees();
 }
